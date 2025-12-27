@@ -1,0 +1,534 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SG Group | Real Estate & Housing Solutions</title>
+    
+    <!-- Fonts: Playfair Display for Luxury Headings, Inter for Clean Body Text -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- AOS Animation Library -->
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    
+    <!-- Phosphor Icons -->
+    <script src="https://unpkg.com/@phosphor-icons/web"></script>
+
+    <!-- Configuration for SG Group Brand Colors -->
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        brand: {
+                            DEFAULT: '#F59E0B', // The specific Orange/Gold
+                            dark: '#D97706',
+                            light: '#FEF3C7',
+                        },
+                        dark: {
+                            DEFAULT: '#111827',
+                            lighter: '#374151'
+                        },
+                        light: '#F9FAFB'
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        serif: ['Playfair Display', 'serif'],
+                    },
+                    backgroundImage: {
+                        'hero-pattern': "linear-gradient(to right bottom, rgba(0,0,0,0.7), rgba(0,0,0,0.5)), url('https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?ixlib=rb-4.0.3&auto=format&fit=crop&w=2000&q=80')",
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        /* Custom Styles for Glossy/Glass Effects */
+        .glass-nav {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(12px);
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+        }
+
+        /* Smooth Hover Transitions */
+        .hover-lift {
+            transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1), box-shadow 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        .hover-lift:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+        }
+
+        /* Image Zoom Effect */
+        .img-zoom-container {
+            overflow: hidden;
+        }
+        .img-zoom-container img {
+            transition: transform 0.7s ease;
+        }
+        .img-zoom-container:hover img {
+            transform: scale(1.1);
+        }
+
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar {
+            width: 10px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #f1f1f1;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #D97706;
+            border-radius: 5px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #B45309;
+        }
+    </style>
+</head>
+<body class="bg-white text-gray-800 font-sans antialiased overflow-x-hidden">
+
+    <!-- NAVIGATION BAR -->
+    <nav id="navbar" class="fixed w-full z-50 transition-all duration-300 py-4 top-0">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-16">
+                
+                <!-- Logo -->
+                <div class="flex-shrink-0 flex items-center gap-2 cursor-pointer" onclick="window.scrollTo(0,0)">
+                    <span class="font-serif text-2xl font-bold text-dark tracking-tight">SG <span class="text-brand">Group</span></span>
+                </div>
+
+                <!-- Desktop Links -->
+                <div class="hidden md:flex space-x-8 items-center">
+                    <a href="#home" class="text-sm font-medium text-gray-900 hover:text-brand transition-colors relative group">
+                        Home
+                        <span class="absolute -bottom-1 left-0 w-0 h-0.5 bg-brand transition-all group-hover:w-full"></span>
+                    </a>
+                    <a href="#about" class="text-sm font-medium text-gray-600 hover:text-brand transition-colors relative group">
+                        About Us
+                        <span class="absolute -bottom-1 left-0 w-0 h-0.5 bg-brand transition-all group-hover:w-full"></span>
+                    </a>
+                    <a href="#services" class="text-sm font-medium text-gray-600 hover:text-brand transition-colors relative group">
+                        Services
+                        <span class="absolute -bottom-1 left-0 w-0 h-0.5 bg-brand transition-all group-hover:w-full"></span>
+                    </a>
+                    <a href="#properties" class="text-sm font-medium text-gray-600 hover:text-brand transition-colors relative group">
+                        Properties
+                        <span class="absolute -bottom-1 left-0 w-0 h-0.5 bg-brand transition-all group-hover:w-full"></span>
+                    </a>
+                    <a href="#contact" class="text-sm font-medium text-gray-600 hover:text-brand transition-colors relative group">
+                        Contact
+                        <span class="absolute -bottom-1 left-0 w-0 h-0.5 bg-brand transition-all group-hover:w-full"></span>
+                    </a>
+                </div>
+
+                <!-- Contact CTA -->
+                <div class="hidden md:flex items-center gap-6">
+                    <div class="flex flex-col text-right hidden lg:block">
+                        <span class="text-xs text-gray-500 font-medium uppercase tracking-wider">Call Anytime</span>
+                        <a href="tel:9705809288" class="text-dark font-bold hover:text-brand transition">970-5809288</a>
+                    </div>
+                    <a href="#contact" class="bg-brand hover:bg-brand-dark text-white px-6 py-2.5 rounded-full font-medium transition shadow-lg shadow-orange-500/30 transform hover:scale-105 flex items-center gap-2">
+                        Schedule a Call <i class="ph-bold ph-arrow-right"></i>
+                    </a>
+                </div>
+
+                <!-- Mobile Menu Button -->
+                <div class="md:hidden flex items-center">
+                    <button id="mobile-menu-btn" class="text-dark hover:text-brand p-2">
+                        <i class="ph ph-list text-3xl"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Mobile Menu -->
+        <div id="mobile-menu" class="hidden md:hidden absolute top-full left-0 w-full bg-white border-t border-gray-100 shadow-xl py-4 px-6 flex flex-col gap-4">
+            <a href="#home" class="text-lg font-medium text-dark hover:text-brand">Home</a>
+            <a href="#about" class="text-lg font-medium text-gray-600 hover:text-brand">About Us</a>
+            <a href="#services" class="text-lg font-medium text-gray-600 hover:text-brand">Services</a>
+            <a href="#properties" class="text-lg font-medium text-gray-600 hover:text-brand">Properties</a>
+            <a href="#contact" class="text-lg font-medium text-gray-600 hover:text-brand">Contact</a>
+            <hr class="border-gray-100">
+            <a href="tel:9705809288" class="text-brand font-bold text-lg">Call: 970-5809288</a>
+        </div>
+    </nav>
+
+    <!-- HERO SECTION -->
+    <section id="home" class="relative h-screen flex items-center bg-hero-pattern bg-cover bg-center bg-no-repeat bg-fixed">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full pt-16 relative z-10">
+            <div class="max-w-3xl">
+                <!-- Tagline -->
+                <div data-aos="fade-right" data-aos-duration="1000" class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/10 backdrop-blur-md border border-white/20 text-white mb-6">
+                    <span class="w-2 h-2 rounded-full bg-brand animate-pulse"></span>
+                    <span class="text-sm font-medium tracking-wide uppercase">No. 1 Real Estate Agency in Nepal</span>
+                </div>
+
+                <!-- Headline -->
+                <h1 data-aos="fade-up" data-aos-delay="200" data-aos-duration="1000" class="text-5xl md:text-7xl font-serif font-bold text-white leading-tight mb-6">
+                    Find Your Dream <br>
+                    <span class="text-transparent bg-clip-text bg-gradient-to-r from-brand to-yellow-300">Home With SG</span>
+                </h1>
+
+                <!-- Subtext -->
+                <p data-aos="fade-up" data-aos-delay="400" data-aos-duration="1000" class="text-lg md:text-xl text-gray-200 mb-10 leading-relaxed font-light max-w-2xl">
+                    Experience luxury, comfort, and the perfect location. We provide the finest selection of properties tailored to your unique lifestyle.
+                </p>
+
+                <!-- Buttons -->
+                <div data-aos="fade-up" data-aos-delay="600" data-aos-duration="1000" class="flex flex-col sm:flex-row gap-4">
+                    <a href="#properties" class="bg-brand hover:bg-brand-dark text-white px-8 py-4 rounded-lg font-semibold text-lg transition shadow-xl shadow-orange-500/20 text-center flex items-center justify-center gap-2 group">
+                        Explore Properties 
+                        <i class="ph-bold ph-house group-hover:animate-bounce"></i>
+                    </a>
+                    <a href="#contact" class="bg-white/10 hover:bg-white text-white hover:text-dark border border-white/30 px-8 py-4 rounded-lg font-semibold text-lg transition backdrop-blur-sm text-center">
+                        Contact Us
+                    </a>
+                </div>
+
+                <!-- Stats Panel -->
+                <div data-aos="fade-in" data-aos-delay="1000" class="absolute bottom-[-80px] md:bottom-20 right-4 md:right-0 bg-white p-6 md:p-8 rounded-xl shadow-2xl flex gap-8 md:gap-12 hidden md:flex">
+                    <div class="text-center">
+                        <div class="text-3xl font-serif font-bold text-brand">30+</div>
+                        <div class="text-xs text-gray-500 uppercase tracking-wide mt-1">Happy Clients</div>
+                    </div>
+                    <div class="w-px bg-gray-200"></div>
+                    <div class="text-center">
+                        <div class="text-3xl font-serif font-bold text-brand">8+</div>
+                        <div class="text-xs text-gray-500 uppercase tracking-wide mt-1">Properties</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Scroll Indicator -->
+        <a href="#about" class="absolute bottom-8 left-1/2 -translate-x-1/2 text-white/50 hover:text-white transition animate-bounce hidden md:block">
+            <i class="ph ph-caret-down text-3xl"></i>
+        </a>
+    </section>
+
+    <!-- ABOUT SECTION (Profile) -->
+    <section id="about" class="py-24 bg-white overflow-hidden">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex flex-col lg:flex-row items-start gap-16">
+                <!-- Image Side -->
+                <div class="lg:w-1/2 relative" data-aos="fade-right" data-aos-duration="1000">
+                    <!-- Profile Card Container -->
+                    <div class="bg-white rounded-2xl shadow-2xl overflow-hidden group border border-gray-100 relative z-10 max-w-md mx-auto lg:mx-0">
+                        <!-- Photo Area - Fixed height to match original size feel, object-top to show face -->
+                        <div class="relative overflow-hidden h-96">
+                            <img src="saksham.jpeg" alt="Saksham Giri" class="w-full h-full object-cover object-top transition duration-700 group-hover:scale-105">
+                            <div class="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent"></div>
+                        </div>
+                        
+                        <!-- Content Below Photo -->
+                        <div class="p-8">
+                            <div class="flex justify-between items-start mb-4">
+                                <div>
+                                    <h3 class="text-2xl font-serif font-bold text-dark">Saksham Giri</h3>
+                                    <p class="text-brand font-medium uppercase text-xs tracking-wider mt-1">Founder & Managing Director</p>
+                                </div>
+                                <div class="bg-brand/10 px-3 py-1 rounded-full">
+                                    <span class="text-brand font-bold text-sm">Age: 19</span>
+                                </div>
+                            </div>
+
+                            <p class="text-gray-600 text-sm leading-relaxed mb-6">
+                                A visionary young leader dedicated to revolutionizing Nepal's real estate market through transparency, trust, and premium service standards.
+                            </p>
+                            
+                            <div class="flex items-center gap-4 pt-4 border-t border-gray-100">
+                                <span class="text-xs font-semibold text-gray-400 uppercase tracking-wide">Connect:</span>
+                                <a href="#" class="text-gray-400 hover:text-brand transition transform hover:scale-110"><i class="ph-fill ph-linkedin-logo text-xl"></i></a>
+                                <a href="#" class="text-gray-400 hover:text-brand transition transform hover:scale-110"><i class="ph-fill ph-twitter-logo text-xl"></i></a>
+                                <a href="#" class="text-gray-400 hover:text-brand transition transform hover:scale-110"><i class="ph-fill ph-instagram-logo text-xl"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Decorative Dots -->
+                    <div class="absolute -top-4 -right-4 w-24 h-24 bg-brand/10 rounded-full -z-10"></div>
+                    <div class="absolute -bottom-4 -left-4 w-32 h-32 bg-brand/10 rounded-full -z-10"></div>
+                </div>
+
+                <!-- Text Side -->
+                <div class="lg:w-1/2 sticky top-24" data-aos="fade-left" data-aos-duration="1000">
+                    <span class="text-brand font-bold tracking-widest text-sm uppercase">Who We Are</span>
+                    <h2 class="text-4xl md:text-5xl font-serif font-bold text-dark mt-3 mb-6">Redefining Real Estate in <span class="text-brand">Nepal</span></h2>
+                    
+                    <p class="text-gray-600 text-lg leading-relaxed mb-6">
+                        At SG Group, we believe that real estate is more than just transactions; it's about building futures. Under the visionary leadership of Saksham Giri, we combine youthful energy with market expertise to deliver unparalleled service.
+                    </p>
+
+                    <div class="space-y-4 mb-8">
+                        <div class="flex items-start gap-4">
+                            <div class="w-10 h-10 rounded-full bg-brand/10 flex items-center justify-center text-brand flex-shrink-0 mt-1">
+                                <i class="ph-fill ph-certificate text-xl"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-bold text-dark text-lg">Trusted Excellence</h4>
+                                <p class="text-gray-500 text-sm">Verified properties ensuring your investment is safe and secure.</p>
+                            </div>
+                        </div>
+                        <div class="flex items-start gap-4">
+                            <div class="w-10 h-10 rounded-full bg-brand/10 flex items-center justify-center text-brand flex-shrink-0 mt-1">
+                                <i class="ph-fill ph-users text-xl"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-bold text-dark text-lg">Client-Centric Approach</h4>
+                                <p class="text-gray-500 text-sm">We listen, understand, and deliver exactly what you are looking for.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <a href="#contact" class="text-brand font-semibold hover:text-brand-dark inline-flex items-center gap-2 group">
+                        Read Our Story <i class="ph-bold ph-arrow-right transform group-hover:translate-x-1 transition"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SERVICES SECTION -->
+    <section id="services" class="py-24 bg-light relative">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            <div class="text-center max-w-3xl mx-auto mb-16" data-aos="fade-up">
+                <span class="text-brand font-bold tracking-widest text-sm uppercase">Our Expertise</span>
+                <h2 class="text-4xl md:text-5xl font-serif font-bold text-dark mt-3">Comprehensive <span class="text-brand">Services</span></h2>
+                <p class="text-gray-600 mt-4">We offer a full spectrum of real estate services designed to help you achieve your property goals.</p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <!-- Service 1 -->
+                <div class="bg-white p-8 rounded-2xl shadow-sm border border-gray-100 hover-lift group" data-aos="fade-up" data-aos-delay="100">
+                    <div class="w-14 h-14 bg-brand rounded-xl flex items-center justify-center text-white text-2xl mb-6 shadow-lg shadow-orange-500/30 group-hover:rotate-6 transition">
+                        <i class="ph ph-house-line"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-dark mb-3">Buying & Selling</h3>
+                    <p class="text-gray-500 leading-relaxed mb-4">Whether you're looking for your first home or selling a luxury estate, we guide you through every step.</p>
+                    <a href="#" class="text-sm font-semibold text-brand hover:underline">Learn More</a>
+                </div>
+
+                <!-- Service 2 -->
+                <div class="bg-white p-8 rounded-2xl shadow-sm border border-gray-100 hover-lift group" data-aos="fade-up" data-aos-delay="200">
+                    <div class="w-14 h-14 bg-brand rounded-xl flex items-center justify-center text-white text-2xl mb-6 shadow-lg shadow-orange-500/30 group-hover:rotate-6 transition">
+                        <i class="ph ph-buildings"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-dark mb-3">Rental Management</h3>
+                    <p class="text-gray-500 leading-relaxed mb-4">We connect tenants with quality homes and help landlords manage their properties efficiently.</p>
+                    <a href="#" class="text-sm font-semibold text-brand hover:underline">Learn More</a>
+                </div>
+
+                <!-- Service 3 -->
+                <div class="bg-white p-8 rounded-2xl shadow-sm border border-gray-100 hover-lift group" data-aos="fade-up" data-aos-delay="300">
+                    <div class="w-14 h-14 bg-brand rounded-xl flex items-center justify-center text-white text-2xl mb-6 shadow-lg shadow-orange-500/30 group-hover:rotate-6 transition">
+                        <i class="ph ph-chart-line-up"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-dark mb-3">Investment Advisory</h3>
+                    <p class="text-gray-500 leading-relaxed mb-4">Strategic insights to help you build a profitable real estate portfolio in Nepal's growing market.</p>
+                    <a href="#" class="text-sm font-semibold text-brand hover:underline">Learn More</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FEATURED PROPERTIES -->
+    <section id="properties" class="py-24 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex flex-col md:flex-row justify-between items-end mb-12 gap-4" data-aos="fade-up">
+                <div>
+                    <span class="text-brand font-bold tracking-widest text-sm uppercase">Exclusive Listings</span>
+                    <h2 class="text-4xl md:text-5xl font-serif font-bold text-dark mt-3">Featured <span class="text-brand">Properties</span></h2>
+                </div>
+                <a href="#" class="inline-flex items-center gap-2 font-semibold text-dark hover:text-brand transition">View All Properties <i class="ph-bold ph-arrow-right"></i></a>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                <!-- Property Card 1 -->
+                <div class="group rounded-xl overflow-hidden shadow-lg hover:shadow-2xl transition border border-gray-100" data-aos="fade-up" data-aos-delay="100">
+                    <div class="relative h-64 img-zoom-container">
+                        <img src="house1.webp" alt="Modern House" class="w-full h-full object-cover">
+                        <div class="absolute top-4 left-4 bg-brand text-white text-xs font-bold px-3 py-1 rounded shadow-md">FOR SALE</div>
+                        <div class="absolute bottom-0 left-0 w-full h-1/2 bg-gradient-to-t from-black/60 to-transparent"></div>
+                        <div class="absolute bottom-4 left-4 text-white font-bold text-xl">Rs. 3.5 Cr</div>
+                    </div>
+                    <div class="p-5 bg-white">
+                        <div class="flex items-center gap-2 text-gray-500 text-xs mb-2">
+                            <i class="ph-fill ph-map-pin text-brand"></i> Thimi, Bhaktapur
+                        </div>
+                        <h3 class="font-serif text-lg font-bold text-dark mb-3 group-hover:text-brand transition truncate">Modern Family Residence</h3>
+                        <div class="flex justify-between items-center text-gray-500 text-xs border-t border-gray-100 pt-3">
+                            <span class="flex items-center gap-1"><i class="ph ph-bed"></i> 4</span>
+                            <span class="flex items-center gap-1"><i class="ph ph-shower"></i> 3</span>
+                            <span class="flex items-center gap-1"><i class="ph ph-ruler"></i> 2400 sqft</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Property Card 2 -->
+                <div class="group rounded-xl overflow-hidden shadow-lg hover:shadow-2xl transition border border-gray-100" data-aos="fade-up" data-aos-delay="200">
+                    <div class="relative h-64 img-zoom-container">
+                        <img src="house3.jpg" alt="Apartment" class="w-full h-full object-cover">
+                        <div class="absolute top-4 left-4 bg-brand-dark text-white text-xs font-bold px-3 py-1 rounded shadow-md">FOR RENT</div>
+                        <div class="absolute bottom-0 left-0 w-full h-1/2 bg-gradient-to-t from-black/60 to-transparent"></div>
+                        <div class="absolute bottom-4 left-4 text-white font-bold text-xl">Rs. 45k/mo</div>
+                    </div>
+                    <div class="p-5 bg-white">
+                        <div class="flex items-center gap-2 text-gray-500 text-xs mb-2">
+                            <i class="ph-fill ph-map-pin text-brand"></i> Lalitpur, KTM
+                        </div>
+                        <h3 class="font-serif text-lg font-bold text-dark mb-3 group-hover:text-brand transition truncate">Luxury City Apartment</h3>
+                        <div class="flex justify-between items-center text-gray-500 text-xs border-t border-gray-100 pt-3">
+                            <span class="flex items-center gap-1"><i class="ph ph-bed"></i> 2</span>
+                            <span class="flex items-center gap-1"><i class="ph ph-shower"></i> 2</span>
+                            <span class="flex items-center gap-1"><i class="ph ph-ruler"></i> 1100 sqft</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CONTACT SECTION -->
+    <section id="contact" class="py-24 bg-dark text-white relative">
+        <!-- Background Overlay -->
+        <div class="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/cubes.png')] opacity-5"></div>
+
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            <div class="flex flex-col lg:flex-row gap-16">
+                
+                <!-- Contact Info -->
+                <div class="lg:w-1/3" data-aos="fade-right">
+                    <span class="text-brand font-bold tracking-widest text-sm uppercase">Get In Touch</span>
+                    <h2 class="text-4xl font-serif font-bold mt-3 mb-6">Let's Discuss Your <span class="text-brand">Future</span></h2>
+                    <p class="text-gray-400 mb-10 leading-relaxed">Ready to find your dream property? Contact our team of experts today. We are available 7 days a week.</p>
+
+                    <div class="space-y-6">
+                        <div class="flex items-center gap-4 group">
+                            <div class="w-12 h-12 rounded-full bg-white/10 flex items-center justify-center text-brand group-hover:bg-brand group-hover:text-white transition">
+                                <i class="ph-fill ph-phone text-2xl"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-bold">Phone</h4>
+                                <p class="text-gray-400 group-hover:text-white transition">970-5809288</p>
+                            </div>
+                        </div>
+
+                        <div class="flex items-center gap-4 group">
+                            <div class="w-12 h-12 rounded-full bg-white/10 flex items-center justify-center text-brand group-hover:bg-brand group-hover:text-white transition">
+                                <i class="ph-fill ph-envelope-simple text-2xl"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-bold">Email</h4>
+                                <p class="text-gray-400 group-hover:text-white transition">sggroup2006@gmail.com</p>
+                            </div>
+                        </div>
+
+                        <div class="flex items-center gap-4 group">
+                            <div class="w-12 h-12 rounded-full bg-white/10 flex items-center justify-center text-brand group-hover:bg-brand group-hover:text-white transition">
+                                <i class="ph-fill ph-map-pin text-2xl"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-bold">Location</h4>
+                                <p class="text-gray-400 group-hover:text-white transition">Thimi, Nepal</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Form -->
+                <div class="lg:w-2/3" data-aos="fade-left">
+                    <form class="bg-white rounded-2xl p-8 md:p-10 shadow-2xl text-gray-800">
+                        <h3 class="text-2xl font-serif font-bold mb-6">Send a Message</h3>
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
+                            <div>
+                                <label class="block text-sm font-medium text-gray-700 mb-2">Your Name</label>
+                                <input type="text" class="w-full px-4 py-3 rounded-lg bg-gray-50 border border-gray-200 focus:border-brand focus:ring-1 focus:ring-brand outline-none transition" placeholder="John Doe">
+                            </div>
+                            <div>
+                                <label class="block text-sm font-medium text-gray-700 mb-2">Phone Number</label>
+                                <input type="tel" class="w-full px-4 py-3 rounded-lg bg-gray-50 border border-gray-200 focus:border-brand focus:ring-1 focus:ring-brand outline-none transition" placeholder="98XXXXXXXX">
+                            </div>
+                        </div>
+                        <div class="mb-6">
+                            <label class="block text-sm font-medium text-gray-700 mb-2">Email Address</label>
+                            <input type="email" class="w-full px-4 py-3 rounded-lg bg-gray-50 border border-gray-200 focus:border-brand focus:ring-1 focus:ring-brand outline-none transition" placeholder="john@example.com">
+                        </div>
+                        <div class="mb-6">
+                            <label class="block text-sm font-medium text-gray-700 mb-2">Message</label>
+                            <textarea rows="4" class="w-full px-4 py-3 rounded-lg bg-gray-50 border border-gray-200 focus:border-brand focus:ring-1 focus:ring-brand outline-none transition" placeholder="I am interested in..."></textarea>
+                        </div>
+                        <button type="button" class="w-full bg-brand hover:bg-brand-dark text-white py-4 rounded-lg font-bold text-lg shadow-lg hover:shadow-xl transition transform hover:-translate-y-1">
+                            Send Message
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="bg-black text-gray-400 py-12 border-t border-gray-800">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex flex-col md:flex-row justify-between items-center gap-8">
+                <div class="text-center md:text-left">
+                    <span class="font-serif text-2xl font-bold text-white">SG <span class="text-brand">Group</span></span>
+                    <p class="mt-2 text-sm">Building Dreams, Creating Legacies.</p>
+                </div>
+                <div class="flex gap-8 text-sm">
+                    <a href="#" class="hover:text-brand transition">Home</a>
+                    <a href="#" class="hover:text-brand transition">Properties</a>
+                    <a href="#" class="hover:text-brand transition">Services</a>
+                    <a href="#" class="hover:text-brand transition">Privacy Policy</a>
+                </div>
+                <div class="flex gap-4">
+                    <a href="#" class="w-10 h-10 rounded-full bg-gray-800 flex items-center justify-center hover:bg-brand hover:text-white transition"><i class="ph-fill ph-facebook-logo"></i></a>
+                    <a href="#" class="w-10 h-10 rounded-full bg-gray-800 flex items-center justify-center hover:bg-brand hover:text-white transition"><i class="ph-fill ph-instagram-logo"></i></a>
+                    <a href="#" class="w-10 h-10 rounded-full bg-gray-800 flex items-center justify-center hover:bg-brand hover:text-white transition"><i class="ph-fill ph-whatsapp-logo"></i></a>
+                </div>
+            </div>
+            <div class="border-t border-gray-800 mt-12 pt-8 text-center text-xs">
+                &copy; 2025 SG Group. All rights reserved. Designed with precision.
+            </div>
+        </div>
+    </footer>
+
+    <!-- Init AOS Animation -->
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+        AOS.init({
+            once: true,
+            offset: 50,
+            duration: 800,
+            easing: 'ease-out-cubic',
+        });
+
+        // Navbar Scroll Effect
+        window.addEventListener('scroll', () => {
+            const nav = document.getElementById('navbar');
+            if (window.scrollY > 20) {
+                nav.classList.add('glass-nav');
+                nav.classList.remove('py-4');
+                nav.classList.add('py-2');
+            } else {
+                nav.classList.remove('glass-nav');
+                nav.classList.add('py-4');
+                nav.classList.remove('py-2');
+            }
+        });
+
+        // Mobile Menu Toggle
+        const menuBtn = document.getElementById('mobile-menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+        menuBtn.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+    </script>
+</body>
+</html>
